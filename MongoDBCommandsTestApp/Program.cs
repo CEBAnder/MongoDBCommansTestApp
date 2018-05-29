@@ -2,6 +2,7 @@
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using System;
+using System.Configuration;
 
 namespace MongoDBCommandsTestApp
 {
@@ -9,7 +10,7 @@ namespace MongoDBCommandsTestApp
     {
         static void Main(string[] args)
         {
-            string connectionString = "mongodb://localhost:27017";
+            string connectionString = ConfigurationManager.ConnectionStrings["MongoDb"].ConnectionString;
             MongoClient client = new MongoClient(connectionString);
             var database = client.GetDatabase("test");
             var commandText = Console.ReadLine();
